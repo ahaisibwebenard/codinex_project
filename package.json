@@ -1,0 +1,15 @@
+{
+  "name": "codinex-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^3.0.0",
+    "csv-parse": "^5.0.0",
+    "openai": "^4.0.0"
+  }
+}
