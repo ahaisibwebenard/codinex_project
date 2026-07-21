@@ -138,6 +138,14 @@
         }
       });
 
+      if (entry.intent === 'fees_payment' && /\b(how much|price|cost|fee|fees|charge|pricing)\b/i.test(rawText)) {
+        score += 6;
+      }
+
+      if (entry.intent === 'beginner_friendly' && /\b(beginner|beginner friendly|no experience|first time|new to computers|novice|easy)\b/i.test(rawText)) {
+        score += 6;
+      }
+
       if (score > bestScore) {
         bestScore = score;
         bestIntent = entry;

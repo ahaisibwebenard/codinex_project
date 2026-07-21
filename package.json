@@ -5,7 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "vercel dev",
-    "start": "vercel dev"
+    "start": "vercel dev",
+    "test": "node tests/admin-auth.test.js && node tests/chatbot.test.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^3.0.0",

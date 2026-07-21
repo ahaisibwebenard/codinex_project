@@ -21,6 +21,18 @@ This repository is prepared for deployment on Vercel.
    - `OPENAI_API_KEY`
    - `SUPABASE_URL`
    - `SUPABASE_SERVICE_ROLE_KEY`
+   - `ADMIN_USERNAME`
+   - `ADMIN_PASSWORD`
+   - `ADMIN_SESSION_SECRET`
+
+## Admin access
+The admin panel is available at `/admin`.
+
+Default local credentials:
+- Username: `benard`
+- Password: `trent`
+
+For production, change these values immediately in your environment variables.
 
 ## Deployment
 Deploy the root folder to Vercel. The static frontend and API routes will work together.

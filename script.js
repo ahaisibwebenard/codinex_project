@@ -154,29 +154,34 @@
     submitButton.disabled = true;
     status.textContent = "Sending...";
 
-    fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: nameEl.value.trim(),
-        email: emailEl.value.trim(),
-        service: serviceEl.value,
-        message: messageEl.value.trim()
-      })
+    var formData = new FormData(form);
+    fetch('https://formspree.io/f/xojglvgg', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json'
+      }
     })
       .then(function (res) {
-        return res.json();
+        return res.json().then(function (body) {
+          if (!res.ok) {
+            var message = (body && body.error) ? body.error : 'Sorry, we could not send your request.';
+            throw new Error(message);
+          }
+          return body;
+        });
       })
       .then(function (data) {
-        if (data && data.success) {
-          status.textContent = data.message || "✓ Request received — an advisor will email you within one business day.";
+        if (data && data.ok) {
+          status.textContent = "✓ Request received — an advisor will email you within one business day.";
           form.reset();
         } else {
-          status.textContent = data.error || "Sorry, we could not send your request. Please try again later.";
+          status.textContent = data && data.error ? data.error : "Sorry, we could not send your request. Please try again later.";
         }
       })
-      .catch(function () {
-        status.textContent = "Sorry, we could not send your request. Please try again later.";
+      .catch(function (error) {
+        console.error('Contact submission failed:', error);
+        status.textContent = error && error.message ? error.message : "Sorry, we could not send your request. Please try again later.";
       })
       .finally(function () {
         submitButton.disabled = false;
@@ -406,4 +411,5 @@
       handleUserMessage(btn.getAttribute("data-q"));
     });
   });
+
 })();

@@ -106,6 +106,180 @@ section > .eyebrow, section > .section__title, section > .section__lead{
 .btn--ghost:hover{ border-color: var(--cyan-dim); color:var(--ink); background: rgba(6,182,212,0.03); }
 .btn--block{ width:100%; }
 
+.admin-login,
+.admin-panel {
+  display: block;
+  padding: 0;
+}
+
+.admin-login__card,
+.admin-panel__card {
+  width: min(100%, 36rem);
+  margin: 0 auto;
+  background: #ffffff;
+  color: #102a43;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+body.admin-page {
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #0b1838 0%, #14254f 45%, #1b3570 100%);
+  color: #f8fafc;
+  font-family: 'Poppins', sans-serif;
+}
+
+body.admin-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.35), transparent 16%),
+              radial-gradient(circle at 80% 15%, rgba(206, 216, 228, 0.35), transparent 18%);
+  pointer-events: none;
+}
+
+.admin-login__header,
+.admin-panel__header > div {
+  margin-bottom: 1.5rem;
+}
+
+.admin-login__header h1,
+.admin-panel__header h1 {
+  font-size: clamp(2rem, 2.2vw, 2.4rem);
+  margin: 0.45rem 0 0.6rem;
+  color: #102a43;
+}
+
+.admin-login__subtitle {
+  color: #334e68;
+  margin-top: 0.35rem;
+  max-width: 34rem;
+}
+
+.admin-login__field {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.admin-login__field span {
+  color: #334e68;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.admin-login__field input {
+  width: 100%;
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 0.95rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #102a43;
+}
+
+.admin-login__card button,
+.admin-panel__header button {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: 0;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #0f5caa, #2c7be5);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.admin-panel__header button {
+  width: auto;
+  min-width: 8rem;
+}
+
+.admin-login__status {
+  min-height: 1.4rem;
+  margin-top: 0.9rem;
+  color: #334e68;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.admin-panel__summary {
+  margin-bottom: 1rem;
+  color: #334e68;
+  font-size: 1rem;
+}
+
+.admin-panel__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-panel__list li {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1rem;
+  padding: 1.15rem 1.25rem;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.admin-panel__list li strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #102a43;
+}
+
+.admin-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-panel__header button {
+  width: auto;
+  padding: 0.8rem 1rem;
+}
+
+.admin-panel__summary {
+  margin-bottom: 0.9rem;
+  color: #334e68;
+}
+
+.admin-panel__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.admin-panel__list li {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 0.95rem;
+  padding: 1rem 1.1rem;
+  background: #f8fbff;
+}
+
+.admin-login__status {
+  min-height: 1.2rem;
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #334e68;
+}
+
 /* =========================================================
    TOP BAR
    ========================================================= */
