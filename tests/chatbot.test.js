@@ -7,7 +7,8 @@ const cases = [
   { query: 'how much is the course', expectedIntent: 'fees_payment' },
   { query: 'where are you located', expectedIntent: 'location' },
   { query: 'do you offer industrial training', expectedIntent: 'industrial_training' },
-  { query: 'can a beginner join', expectedIntent: 'beginner_friendly' }
+  { query: 'can a beginner join', expectedIntent: 'beginner_friendly' },
+  { query: 'I need help with my website and computer training', expectedIntent: 'general_support' }
 ];
 
 for (const testCase of cases) {

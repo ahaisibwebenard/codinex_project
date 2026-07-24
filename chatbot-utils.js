@@ -16,14 +16,14 @@
     },
     {
       intent: 'repair_inquiry',
-      keywords: ['repair', 'fix', 'broken', 'not working', "won't turn on", 'power issue', 'screen', 'battery', 'virus', 'slow', 'hardware', 'fault', 'issue', 'problem'],
-      patterns: [/\b(fix|repair|broken|not working|won't turn on|water damaged|screen|battery|virus|slow|fault|problem|issue)\b/i],
+      keywords: ['repair', 'fix', 'broken', 'not working', "won't turn on", 'power issue', 'screen', 'battery', 'virus', 'slow', 'hardware', 'fault', 'issue', 'problem', 'motherboard', 'keyboard', 'charger', 'adapter', 'overheating', 'boot', 'startup', 'diagnose', 'diagnostic', 'malware'],
+      patterns: [/\b(fix|repair|broken|not working|won't turn on|water damaged|screen|battery|virus|slow|fault|problem|issue|motherboard|keyboard|charger|adapter|overheating|boot|startup|diagnose|malware)\b/i],
       response: 'We repair laptops and desktops, replace damaged parts, clean malware, and help with everyday hardware issues. If you want, I can also help you decide the best next step for your device.'
     },
     {
       intent: 'services_inquiry',
-      keywords: ['service', 'services', 'networking', 'cctv', 'camera', 'software development', 'solar', 'electrical', 'sales', 'supplies', 'hardware', 'website', 'hosting', 'website design'],
-      patterns: [/\b(what services|do you offer|can you do|what can you do|services do you provide)\b/i],
+      keywords: ['service', 'services', 'networking', 'cctv', 'camera', 'software development', 'solar', 'electrical', 'sales', 'supplies', 'hardware', 'website', 'hosting', 'website design', 'graphics', 'design', 'printing', 'branding', 'office setup', 'router', 'wifi', 'server', 'maintenance'],
+      patterns: [/\b(what services|do you offer|can you do|what can you do|services do you provide|which services|service list|support)\b/i],
       response: 'We cover laptop and desktop repair, computer sales and supplies, website design and hosting, networking, software development, graphics design, CCTV, computer training, and solar and electrical services.'
     },
     {
@@ -34,9 +34,9 @@
     },
     {
       intent: 'fees_payment',
-      keywords: ['fee', 'fees', 'cost', 'price', 'pricing', 'pay', 'payment', 'afford', 'charge'],
-      patterns: [/\b(fee|fees|cost|price|pricing|payment|charge|how much)\b/i],
-      response: 'Course fees are listed in the training fees structure. An advisor can share the latest pricing and intake dates when you contact us.'
+      keywords: ['fee', 'fees', 'cost', 'price', 'pricing', 'pay', 'payment', 'afford', 'charge', 'budget', 'cheap', 'affordable', 'expensive', 'discount'],
+      patterns: [/\b(fee|fees|cost|price|pricing|payment|charge|how much|budget|affordable|cheap|discount|expensive)\b/i],
+      response: 'Course fees are listed in the training fees structure. An advisor can share the latest pricing and intake dates when you contact us. We also help customers choose options that fit their budget.'
     },
     {
       intent: 'enrollment_process',
@@ -76,15 +76,27 @@
     },
     {
       intent: 'contact_support',
-      keywords: ['contact', 'phone', 'call', 'email', 'reach', 'advisor', 'support', 'whatsapp', 'number', 'help'],
-      patterns: [/\b(contact|phone|call|email|reach|support|whatsapp|number|help|get in touch)\b/i],
-      response: 'You can call +256 756 198 585 or +256 776 479 173, email info@codinex.co.ug, or use the contact form on this page.'
+      keywords: ['contact', 'phone', 'call', 'email', 'reach', 'advisor', 'support', 'whatsapp', 'number', 'help', 'message', 'chat', 'consultation', 'book'],
+      patterns: [/\b(contact|phone|call|email|reach|support|whatsapp|number|help|get in touch|message|consultation|book)\b/i],
+      response: 'You can call +256 756 198 585 or +256 776 479 173, email info@codinex.co.ug, or use the contact form on this page to book a consultation.'
     },
     {
       intent: 'thanks',
       keywords: ['thank', 'thanks', 'appreciate', 'cool', 'great', 'awesome', 'thank you'],
       patterns: [/\b(thank|thanks|appreciate|great|awesome)\b/i],
       response: 'You are welcome. I am happy to help with anything else about our services or training.'
+    },
+    {
+      intent: 'general_support',
+      keywords: ['can you help', 'i need help', 'assist me', 'what do you know', 'information', 'recommend', 'suggest', 'advice', 'guide', 'best', 'which one', 'should i choose', 'what should i do'],
+      patterns: [/\b(can you help|i need help|assist me|what do you know|recommend|suggest|advice|guide|best|which one|should i choose|what should i do)\b/i],
+      response: 'I can help you choose the right service, explain our training, guide you to the best next step, and share contact details for follow-up.'
+    },
+    {
+      intent: 'business_support',
+      keywords: ['office', 'business', 'company', 'school', 'hospital', 'hotel', 'institution', 'organization', 'team', 'staff', 'work', 'workflow', 'digitize', 'management', 'records'],
+      patterns: [/\b(office|business|company|school|hospital|hotel|institution|organization|team|staff|workflow|digitize|records|management)\b/i],
+      response: 'We support businesses, schools, hospitals, hotels, and other institutions with reliable computer systems, software, networking, and training.'
     }
   ];
 
@@ -146,6 +158,10 @@
         score += 6;
       }
 
+      if (entry.intent === 'general_support' && /\b(help|assist|advice|guide|recommend|suggest|question|problem|best|which one|should i|what should|can you|need help)\b/i.test(rawText)) {
+        score += 8;
+      }
+
       if (score > bestScore) {
         bestScore = score;
         bestIntent = entry;
@@ -189,7 +205,10 @@
       'What services do you offer?',
       'What courses do you train?',
       'Where are you located?',
-      'Do you offer industrial training?'
+      'Do you offer industrial training?',
+      'Can you help with a laptop that won\'t turn on?',
+      'How do I register for training?',
+      'Do you support businesses and schools?'
     ];
   }
 
@@ -259,7 +278,12 @@
       var scored = idx.map(function (row) {
         var s1 = scoreOverlap(qTokens, row.tokens);
         var s2 = scoreOverlap(row.tokens, qTokens);
-        return { row: row, score: Math.max(s1, s2) };
+        var keywordBoost = 0;
+        if (/(repair|fix|broken|laptop|desktop|computer)/i.test(query)) keywordBoost += 0.05;
+        if (/(training|course|learn|academy|class)/i.test(query)) keywordBoost += 0.05;
+        if (/(contact|call|email|phone|address|location|where)/i.test(query)) keywordBoost += 0.05;
+        if (/(business|school|hospital|hotel|office|institution)/i.test(query)) keywordBoost += 0.05;
+        return { row: row, score: Math.max(s1, s2) + keywordBoost };
       });
       scored.sort(function (a, b) { return b.score - a.score; });
       return scored.slice(0, topN).filter(function (s) { return s.score > 0.12; }).map(function (s) { return s.row; });

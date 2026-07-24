@@ -5,25 +5,78 @@
 (function () {
   "use strict";
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var yearEl = document.getElementById("year");
+
+  function createRipple(event) {
+    var button = event.currentTarget;
+    var ripple = document.createElement("span");
+    ripple.className = "ripple";
+    var rect = button.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height) * 1.2;
+    ripple.style.width = size + "px";
+    ripple.style.height = size + "px";
+    ripple.style.left = (event.clientX - rect.left) + "px";
+    ripple.style.top = (event.clientY - rect.top) + "px";
+    button.appendChild(ripple);
+    setTimeout(function () { ripple.remove(); }, 600);
+  }
+
+  document.querySelectorAll(".btn, .filter-btn, .tab-button, .nav__toggle, .chatbot__toggle, .chatbot__close, .chatbot__form button, .chatbot__signup button").forEach(function (button) {
+    button.addEventListener("click", createRipple);
+  });
+
+  var progressBar = document.createElement("div");
+  progressBar.className = "scroll-progress";
+  document.body.appendChild(progressBar);
+
+  var backToTop = document.createElement("button");
+  backToTop.className = "back-to-top";
+  backToTop.setAttribute("aria-label", "Back to top");
+  backToTop.innerHTML = "↑";
+  document.body.appendChild(backToTop);
+
+  function updateScrollState() {
+    var scrollTop = window.scrollY || window.pageYOffset || 0;
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = maxScroll > 0 ? (scrollTop / maxScroll) : 0;
+    progressBar.style.transform = "scaleX(" + Math.min(Math.max(progress, 0), 1) + ")";
+    backToTop.classList.toggle("is-visible", scrollTop > 320);
+  }
+
+  window.addEventListener("scroll", updateScrollState, { passive: true });
+  window.addEventListener("resize", updateScrollState);
+  backToTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  updateScrollState();
+
+  var path = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav__links a").forEach(function (link) {
+    var href = link.getAttribute("href") || "";
+    var isMatch = href === path || (path === "" && href === "index.html") || (href === "index.html" && path === "");
+    link.classList.toggle("is-active", isMatch);
+  });
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------------- Mobile nav ---------------- */
   var navToggle = document.getElementById("navToggle");
   var navLinks = document.getElementById("navLinks");
-  navToggle.addEventListener("click", function () {
-    var open = navLinks.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-  navLinks.querySelectorAll("a").forEach(function (a) {
-    a.addEventListener("click", function () {
-      navLinks.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
+  if (navToggle && navLinks) {
+    navToggle.addEventListener("click", function () {
+      var open = navLinks.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-  });
+    navLinks.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        navLinks.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 
   /* ---------------- Scroll reveal ---------------- */
   var revealTargets = document.querySelectorAll(
-    ".course-card, .process__step, .outcome, .instructor-card, .testimonial, .section__title, .section__lead"
+    ".course-card, .process__step, .outcome, .instructor-card, .testimonial, .section__title, .section__lead, .service-card, .feature-card, .timeline-card, .contact-card, .page-hero__copy, .page-hero__panel, .service-filter, .tab-list, .tab-panel"
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
 
@@ -42,6 +95,99 @@
     revealTargets.forEach(function (el) { io.observe(el); });
   } else {
     revealTargets.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  /* ---------------- Card tilt ---------------- */
+  document.querySelectorAll(".service-card, .feature-card, .timeline-card, .contact-card, .panel-card, .quote-card").forEach(function (card) {
+    card.addEventListener("mousemove", function (event) {
+      var rect = card.getBoundingClientRect();
+      var x = event.clientX - rect.left;
+      var y = event.clientY - rect.top;
+      var rotateY = ((x / rect.width) - 0.5) * 8;
+      var rotateX = ((0.5 - (y / rect.height))) * 8;
+      card.style.transform = "perspective(900px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) translateY(-6px) scale(1.01)";
+    });
+    card.addEventListener("mouseleave", function () {
+      card.style.transform = "";
+    });
+  });
+
+  /* ---------------- Service filter ---------------- */
+  var filterButtons = document.querySelectorAll("[data-service-filter] .filter-btn");
+  var serviceCards = document.querySelectorAll(".service-card");
+
+  if (filterButtons.length) {
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var filter = button.getAttribute("data-filter") || "all";
+        filterButtons.forEach(function (other) {
+          other.classList.toggle("is-active", other === button);
+        });
+
+        serviceCards.forEach(function (card) {
+          var category = card.getAttribute("data-category") || "all";
+          var match = filter === "all" || category === filter;
+          card.style.display = match ? "block" : "none";
+        });
+      });
+    });
+  }
+
+  /* ---------------- Training tabs ---------------- */
+  var tabButtons = document.querySelectorAll("[data-tab-button]");
+  var tabPanels = document.querySelectorAll("[data-tab-panel]");
+
+  if (tabButtons.length && tabPanels.length) {
+    tabButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var target = button.getAttribute("data-tab-button");
+        tabButtons.forEach(function (other) {
+          other.classList.toggle("is-active", other === button);
+        });
+        tabPanels.forEach(function (panel) {
+          var isMatch = panel.getAttribute("data-tab-panel") === target;
+          panel.hidden = !isMatch;
+          panel.classList.toggle("is-active", isMatch);
+        });
+      });
+    });
+  }
+
+  /* ---------------- Quote estimator ---------------- */
+  var quoteService = document.getElementById("quoteService");
+  var quoteSize = document.getElementById("quoteSize");
+  var quoteUrgent = document.getElementById("quoteUrgent");
+  var quoteSizeLabel = document.getElementById("quoteSizeLabel");
+  var quoteOutput = document.getElementById("quoteOutput");
+
+  function formatCurrency(value) {
+    return "UGX " + value.toLocaleString("en-US");
+  }
+
+  function updateQuote() {
+    if (!quoteService || !quoteSize || !quoteOutput) return;
+
+    var base = 650000;
+    var sizeValue = Number(quoteSize.value) || 3;
+    var labels = ["Small scope", "Simple scope", "Medium scope", "Broader scope", "Large scope", "Full-scale scope"];
+    var serviceValue = quoteService.value;
+
+    if (serviceValue === "network") base = 850000;
+    if (serviceValue === "web") base = 950000;
+    if (serviceValue === "training") base = 400000;
+
+    var estimate = base + (sizeValue * 120000);
+    if (quoteUrgent && quoteUrgent.checked) estimate += 150000;
+    if (quoteSizeLabel) quoteSizeLabel.textContent = labels[sizeValue - 1] || labels[2];
+    quoteOutput.textContent = "Estimated starting price: " + formatCurrency(estimate);
+  }
+
+  if (quoteService && quoteSize && quoteOutput) {
+    [quoteService, quoteSize, quoteUrgent].forEach(function (field) {
+      if (field) field.addEventListener("input", updateQuote);
+      if (field) field.addEventListener("change", updateQuote);
+    });
+    updateQuote();
   }
 
   /* ---------------- Terminal typing animation ---------------- */
@@ -101,7 +247,9 @@
     }
     typeChar();
   }
-  typeTerminal();
+  if (terminalBody) {
+    typeTerminal();
+  }
 
   /* ---------------- FAQ accordion ---------------- */
   document.querySelectorAll(".faq__q").forEach(function (btn) {
@@ -123,11 +271,13 @@
   var form = document.getElementById("contactForm");
   var status = document.getElementById("contactStatus");
 
-  function setError(id, message) {
-    document.getElementById(id).textContent = message || "";
-  }
+  if (form) {
+    function setError(id, message) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = message || "";
+    }
 
-  form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function (e) {
     e.preventDefault();
     var nameEl = document.getElementById("name");
     var emailEl = document.getElementById("email");
@@ -152,7 +302,7 @@
     if (!valid) return;
 
     submitButton.disabled = true;
-    status.textContent = "Sending...";
+    if (status) status.textContent = "Sending...";
 
     var formData = new FormData(form);
     fetch('https://formspree.io/f/xojglvgg', {
@@ -173,20 +323,21 @@
       })
       .then(function (data) {
         if (data && data.ok) {
-          status.textContent = "✓ Request received — an advisor will email you within one business day.";
+          if (status) status.textContent = "✓ Request received — an advisor will email you within one business day.";
           form.reset();
         } else {
-          status.textContent = data && data.error ? data.error : "Sorry, we could not send your request. Please try again later.";
+          if (status) status.textContent = data && data.error ? data.error : "Sorry, we could not send your request. Please try again later.";
         }
       })
       .catch(function (error) {
         console.error('Contact submission failed:', error);
-        status.textContent = error && error.message ? error.message : "Sorry, we could not send your request. Please try again later.";
+        if (status) status.textContent = error && error.message ? error.message : "Sorry, we could not send your request. Please try again later.";
       })
       .finally(function () {
         submitButton.disabled = false;
       });
-  });
+    });
+  }
 
   /* =========================================================
      CHATBOT

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services | Codinex Computers Ltd</title>
+    <meta name="description" content="Explore Codinex services from repairs and networking to custom software, design, and solar solutions." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="skip-link"><a href="#main">Skip to content</a></div>
+
+    <div class="topbar">
+      <div class="topbar__inner">
+        <span><a href="tel:+256756198585">+256 756 198 585</a> · <a href="tel:+256776479173">+256 776 479 173</a></span>
+        <span><a href="mailto:info@codinex.co.ug">info@codinex.co.ug</a></span>
+      </div>
+    </div>
+
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="Codinex home">
+          <img src="codinex-logo.png" alt="" class="nav__mark" />
+          <span class="nav__wordmark">Codinex</span>
+        </a>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="services.html" class="is-active">Services</a>
+          <a href="training.html">Training</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="page-hero__inner">
+          <div class="page-hero__copy reveal">
+            <p class="eyebrow">What we do best</p>
+            <h1>One team for repairs, networks, websites, and business software.</h1>
+            <p>From a single laptop repair to a full office setup, we turn practical technology into dependable results.</p>
+            <div class="hero__actions">
+              <a href="contact.html" class="btn btn--primary">Book a consultation</a>
+              <a href="training.html" class="btn btn--ghost">Explore training</a>
+            </div>
+          </div>
+          <div class="page-hero__panel reveal">
+            <div class="panel-card">
+              <h3>Popular support requests</h3>
+              <ul>
+                <li>PC repair and virus removal</li>
+                <li>Wi-Fi and router setup</li>
+                <li>Custom web build and hosting</li>
+                <li>Security camera installations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Service menu</p>
+          <h2 class="section__title">Filter the support you need</h2>
+          <p class="section__lead">Select a category and see the services we deliver most often.</p>
+        </div>
+
+        <div class="service-filter reveal" data-service-filter>
+          <button type="button" class="filter-btn is-active" data-filter="all">All services</button>
+          <button type="button" class="filter-btn" data-filter="repair">Repair</button>
+          <button type="button" class="filter-btn" data-filter="network">Networking</button>
+          <button type="button" class="filter-btn" data-filter="web">Web &amp; software</button>
+          <button type="button" class="filter-btn" data-filter="training">Training</button>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card reveal" data-category="repair">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Technician working on a laptop motherboard and components" />
+            </div>
+            <div class="service-card__icon">🛠️</div>
+            <h3>Laptop &amp; Desktop Repair</h3>
+            <p>Hardware diagnostics, fan and board work, screen replacements, and operating system cleanup.</p>
+          </article>
+          <article class="service-card reveal" data-category="repair">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80" alt="Modern computer setup with monitor, keyboard, and accessories" />
+            </div>
+            <div class="service-card__icon">💻</div>
+            <h3>Computer Sales &amp; Supplies</h3>
+            <p>Reliable hardware and accessories sourced for homes, offices, and education institutions.</p>
+          </article>
+          <article class="service-card reveal" data-category="network">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" alt="Networking equipment with routers and cables in a server area" />
+            </div>
+            <div class="service-card__icon">📡</div>
+            <h3>Network Designing</h3>
+            <p>Router, Wi-Fi, switch, and server-room solutions that keep teams connected without downtime.</p>
+          </article>
+          <article class="service-card reveal" data-category="network">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=80" alt="Security camera monitoring a building entrance" />
+            </div>
+            <div class="service-card__icon">🎥</div>
+            <h3>CCTV Installation</h3>
+            <p>Secure homes and businesses with cameras, monitoring, and setup guidance.</p>
+          </article>
+          <article class="service-card reveal" data-category="web">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Laptop displaying a modern website design interface" />
+            </div>
+            <div class="service-card__icon">🌐</div>
+            <h3>Website Design &amp; Hosting</h3>
+            <p>From brochure sites to business portals, we design and host websites that keep your brand online.</p>
+          </article>
+          <article class="service-card reveal" data-category="web">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Developer reviewing code on multiple screens" />
+            </div>
+            <div class="service-card__icon">⚙️</div>
+            <h3>Software Development</h3>
+            <p>Custom systems for traceability, bookkeeping, and workflow management built around real operations.</p>
+          </article>
+          <article class="service-card reveal" data-category="training">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Trainer leading a classroom session with students using laptops" />
+            </div>
+            <div class="service-card__icon">🎓</div>
+            <h3>Professional Training</h3>
+            <p>Practical classes in Word, Excel, PowerPoint, networking, and maintenance for all skill levels.</p>
+          </article>
+          <article class="service-card reveal" data-category="training">
+            <div class="service-card__media">
+              <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80" alt="Solar panels installed on a roof for renewable energy" />
+            </div>
+            <div class="service-card__icon">☀️</div>
+            <h3>Solar &amp; Electrical Services</h3>
+            <p>Power-ready systems for homes, schools, and commercial sites with dependable installation support.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-section page-section--alt">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Why clients choose us</p>
+          <h2 class="section__title">Support that is practical, personal, and local.</h2>
+        </div>
+        <div class="info-grid">
+          <div class="feature-card reveal">
+            <h3>Fast response</h3>
+            <p>We keep service requests moving with quick diagnosis and clear next steps.</p>
+          </div>
+          <div class="feature-card reveal">
+            <h3>Hands-on training</h3>
+            <p>Our programmes are built for beginners and professionals who need usable skills.</p>
+          </div>
+          <div class="feature-card reveal">
+            <h3>Long-term support</h3>
+            <p>We stay with your project after setup so your systems keep working well.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-row">
+            <img src="codinex-logo.png" alt="" class="footer__mark" />
+            <span>Codinex</span>
+          </div>
+          <p>Computer services, training, and tech support in Mbarara.</p>
+        </div>
+        <nav class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="training.html">Training</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <p class="footer__copyright">© <span id="year"></span> Codinex Computers Ltd.</p>
+      </div>
+    </footer>
+
+    <div class="chatbot" id="chatbot">
+      <button class="chatbot__toggle" id="chatbotToggle" aria-expanded="false" aria-controls="chatbotPanel">
+        <span class="chatbot__toggle-icon" aria-hidden="true">?</span>
+        <span class="chatbot__toggle-text">Ask Codinex</span>
+      </button>
+      <div class="chatbot__panel" id="chatbotPanel" hidden>
+        <div class="chatbot__header">
+          <div class="chatbot__header-bar">
+            <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          </div>
+          <div class="chatbot__header-text">
+            <strong>Codinex help</strong>
+            <span>service, training &amp; contact information</span>
+          </div>
+          <button class="chatbot__close" id="chatbotClose" aria-label="Close chat">×</button>
+        </div>
+        <div class="chatbot__signup" id="chatbotSignup">
+          <div class="chatbot__signup-hero">
+            <div class="chatbot__signup-badge" aria-hidden="true">✦</div>
+            <div>
+              <p class="chatbot__signup-title">Welcome to Codinex</p>
+              <p class="chatbot__signup-subtitle">Sign in to chat with our support team.</p>
+            </div>
+          </div>
+          <label class="chatbot__field">
+            <span class="chatbot__field-label">Full name</span>
+            <input type="text" id="chatbotName" placeholder="Enter your name" autocomplete="name" />
+          </label>
+          <label class="chatbot__field">
+            <span class="chatbot__field-label">Email address</span>
+            <input type="email" id="chatbotEmail" placeholder="name@example.com" autocomplete="email" />
+          </label>
+          <button type="button" id="chatbotSignupBtn">Continue</button>
+          <p class="chatbot__signup-status" id="chatbotSignupStatus" role="status"></p>
+        </div>
+        <div class="chatbot__log" id="chatbotLog" role="log" aria-live="polite"></div>
+        <div class="chatbot__quick" id="chatbotQuick" hidden>
+          <button data-q="What services do you offer?">Services?</button>
+          <button data-q="What courses do you train?">Training?</button>
+          <button data-q="Where are you located?">Location?</button>
+        </div>
+        <form class="chatbot__form" id="chatbotForm">
+          <input type="text" id="chatbotInput" placeholder="Sign in to start chatting" autocomplete="off" disabled />
+          <button type="submit" aria-label="Send" disabled>Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="chatbot-utils.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

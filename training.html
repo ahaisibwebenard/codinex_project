@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Training | Codinex Computers Ltd</title>
+    <meta name="description" content="View Codinex training programmes for beginners, professionals, and industrial training students." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="skip-link"><a href="#main">Skip to content</a></div>
+
+    <div class="topbar">
+      <div class="topbar__inner">
+        <span><a href="tel:+256756198585">+256 756 198 585</a> · <a href="tel:+256776479173">+256 776 479 173</a></span>
+        <span><a href="mailto:info@codinex.co.ug">info@codinex.co.ug</a></span>
+      </div>
+    </div>
+
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="Codinex home">
+          <img src="codinex-logo.png" alt="" class="nav__mark" />
+          <span class="nav__wordmark">Codinex</span>
+        </a>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="training.html" class="is-active">Training</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="page-hero__inner">
+          <div class="page-hero__copy reveal">
+            <p class="eyebrow">Training programmes</p>
+            <h1>Choose a learning path that matches your goals.</h1>
+            <p>We offer beginner-friendly courses, professional skills training, and industrial placements for students.</p>
+            <div class="hero__actions">
+              <a href="contact.html" class="btn btn--primary">Request a course outline</a>
+            </div>
+          </div>
+          <div class="page-hero__panel reveal">
+            <div class="panel-card">
+              <h3>Available intakes</h3>
+              <ul>
+                <li>May to July</li>
+                <li>October to December</li>
+                <li>In-person and online options</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Learning paths</p>
+          <h2 class="section__title">Switch between our training tracks</h2>
+        </div>
+
+        <div class="tab-list reveal" role="tablist" aria-label="Training tracks">
+          <button class="tab-button is-active" type="button" data-tab-button="professional">Professional</button>
+          <button class="tab-button" type="button" data-tab-button="skills">Skills</button>
+          <button class="tab-button" type="button" data-tab-button="industrial">Industrial</button>
+        </div>
+
+        <div class="tab-panel is-active reveal" data-tab-panel="professional">
+          <div class="training-grid">
+            <article class="service-card">
+              <h3>Computer Applications</h3>
+              <p>Word, Excel, Access, Publisher, PowerPoint, email, and internet basics.</p>
+            </article>
+            <article class="service-card">
+              <h3>Website Design</h3>
+              <p>Build and publish your first website with practical hosting guidance.</p>
+            </article>
+            <article class="service-card">
+              <h3>Networking</h3>
+              <p>Learn the essentials of routers, Wi-Fi, switches, and network administration.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="tab-panel reveal" data-tab-panel="skills" hidden>
+          <div class="training-grid">
+            <article class="service-card">
+              <h3>Presentation Skills</h3>
+              <p>Present technical and business ideas with confidence and clarity.</p>
+            </article>
+            <article class="service-card">
+              <h3>Project Management</h3>
+              <p>Plan, run, and deliver digital or business projects with better structure.</p>
+            </article>
+            <article class="service-card">
+              <h3>Technology Trends</h3>
+              <p>Understand the latest digital tools, cloud patterns, and modern workflows.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="tab-panel reveal" data-tab-panel="industrial" hidden>
+          <div class="training-grid">
+            <article class="service-card">
+              <h3>Industrial Training</h3>
+              <p>Structured work placement for students in IT, software engineering, and computer science.</p>
+            </article>
+            <article class="service-card">
+              <h3>Practical Mentorship</h3>
+              <p>Work in a real environment with guidance from experienced engineers and technicians.</p>
+            </article>
+            <article class="service-card">
+              <h3>Placement Support</h3>
+              <p>We help you prepare documentation, onboarding steps, and learning goals for each intake.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-row">
+            <img src="codinex-logo.png" alt="" class="footer__mark" />
+            <span>Codinex</span>
+          </div>
+          <p>Training that moves from idea to practical skill.</p>
+        </div>
+        <nav class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="training.html">Training</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <p class="footer__copyright">© <span id="year"></span> Codinex Computers Ltd.</p>
+      </div>
+    </footer>
+
+    <div class="chatbot" id="chatbot">
+      <button class="chatbot__toggle" id="chatbotToggle" aria-expanded="false" aria-controls="chatbotPanel">
+        <span class="chatbot__toggle-icon" aria-hidden="true">?</span>
+        <span class="chatbot__toggle-text">Ask Codinex</span>
+      </button>
+      <div class="chatbot__panel" id="chatbotPanel" hidden>
+        <div class="chatbot__header">
+          <div class="chatbot__header-bar">
+            <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          </div>
+          <div class="chatbot__header-text">
+            <strong>Codinex help</strong>
+            <span>service, training &amp; contact information</span>
+          </div>
+          <button class="chatbot__close" id="chatbotClose" aria-label="Close chat">×</button>
+        </div>
+        <div class="chatbot__signup" id="chatbotSignup">
+          <div class="chatbot__signup-hero">
+            <div class="chatbot__signup-badge" aria-hidden="true">✦</div>
+            <div>
+              <p class="chatbot__signup-title">Welcome to Codinex</p>
+              <p class="chatbot__signup-subtitle">Sign in to chat with our support team.</p>
+            </div>
+          </div>
+          <label class="chatbot__field">
+            <span class="chatbot__field-label">Full name</span>
+            <input type="text" id="chatbotName" placeholder="Enter your name" autocomplete="name" />
+          </label>
+          <label class="chatbot__field">
+            <span class="chatbot__field-label">Email address</span>
+            <input type="email" id="chatbotEmail" placeholder="name@example.com" autocomplete="email" />
+          </label>
+          <button type="button" id="chatbotSignupBtn">Continue</button>
+          <p class="chatbot__signup-status" id="chatbotSignupStatus" role="status"></p>
+        </div>
+        <div class="chatbot__log" id="chatbotLog" role="log" aria-live="polite"></div>
+        <div class="chatbot__quick" id="chatbotQuick" hidden>
+          <button data-q="What services do you offer?">Services?</button>
+          <button data-q="What courses do you train?">Training?</button>
+          <button data-q="Where are you located?">Location?</button>
+        </div>
+        <form class="chatbot__form" id="chatbotForm">
+          <input type="text" id="chatbotInput" placeholder="Sign in to start chatting" autocomplete="off" disabled />
+          <button type="submit" aria-label="Send" disabled>Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="chatbot-utils.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

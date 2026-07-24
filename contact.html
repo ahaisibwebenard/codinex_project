@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Codinex Computers Ltd</title>
+    <meta name="description" content="Connect with Codinex for repairs, training, and digital support in Mbarara." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="skip-link"><a href="#main">Skip to content</a></div>
+
+    <div class="topbar">
+      <div class="topbar__inner">
+        <span><a href="tel:+256756198585">+256 756 198 585</a> · <a href="tel:+256776479173">+256 776 479 173</a></span>
+        <span><a href="mailto:info@codinex.co.ug">info@codinex.co.ug</a></span>
+      </div>
+    </div>
+
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand" aria-label="Codinex home">
+          <img src="codinex-logo.png" alt="" class="nav__mark" />
+          <span class="nav__wordmark">Codinex</span>
+        </a>
+        <nav class="nav__links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="training.html">Training</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="is-active">Contact</a>
+        </nav>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="page-hero__inner">
+          <div class="page-hero__copy reveal">
+            <p class="eyebrow">Contact us</p>
+            <h1>Tell us what you need and we’ll guide you quickly.</h1>
+            <p>Reach us by phone, email, or through a simple online request form.</p>
+          </div>
+          <div class="page-hero__panel reveal">
+            <div class="panel-card">
+              <h3>Visit us</h3>
+              <ul>
+                <li>Mbarara City Mall, Level 2</li>
+                <li>Room 33, Buremba Road</li>
+                <li>Mon–Fri 8:30 AM – 5:30 PM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <h3>Get in touch</h3>
+            <ul class="contact__details">
+              <li><strong>Call:</strong> <a href="tel:+256756198585">+256 756 198 585</a> · <a href="tel:+256776479173">+256 776 479 173</a></li>
+              <li><strong>Email:</strong> <a href="mailto:info@codinex.co.ug">info@codinex.co.ug</a></li>
+              <li><strong>Social:</strong> <a href="https://twitter.com/codinex_ug" target="_blank" rel="noopener">X</a> · <a href="https://www.facebook.com/CodinexUg" target="_blank" rel="noopener">Facebook</a></li>
+            </ul>
+          </div>
+          <div class="contact-card reveal">
+            <h3>Quick estimate</h3>
+            <form class="quote-card" id="quoteEstimator">
+              <label class="field">
+                <span>Service</span>
+                <select id="quoteService">
+                  <option value="repair">Laptop / Desktop Repair</option>
+                  <option value="network">Network Setup</option>
+                  <option value="web">Website Design</option>
+                  <option value="training">Training Course</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Project size</span>
+                <input type="range" id="quoteSize" min="1" max="6" value="3" />
+                <small id="quoteSizeLabel">Medium scope</small>
+              </label>
+              <label class="field field--inline">
+                <input type="checkbox" id="quoteUrgent" />
+                <span>Need fast turnaround</span>
+              </label>
+              <div class="quote-output" id="quoteOutput">Estimated starting price: UGX 650,000</div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section page-section--alt">
+        <div class="contact-forms">
+          <div class="contact-panel">
+            <div class="contact-panel__header">
+              <p class="eyebrow">Send a request</p>
+              <h3>We’ll reply with the right next step</h3>
+            </div>
+            <form class="contact__form" id="contactForm" action="https://formspree.io/f/xojglvgg" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New Codinex contact request" />
+              <div class="field">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" required autocomplete="name" />
+              <span class="field__error" id="nameError"></span>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+              <span class="field__error" id="emailError"></span>
+            </div>
+            <div class="field">
+              <label for="service">What do you need?</label>
+              <select id="service" name="service">
+                <option value="">Not sure yet — advise me</option>
+                <option>Laptop / Desktop Repair</option>
+                <option>Computer Sales &amp; Supplies</option>
+                <option>Website Designing &amp; Hosting</option>
+                <option>Network Designing</option>
+                <option>Software Development</option>
+                <option>Graphics Designing</option>
+                <option>CCTV Cameras</option>
+                <option>Computer Training</option>
+                <option>Solar &amp; Electrical Services</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Anything else we should know?</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+              <button type="submit" class="btn btn--primary btn--block">Send message</button>
+              <p class="contact__status" id="contactStatus" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-row">
+            <img src="codinex-logo.png" alt="" class="footer__mark" />
+            <span>Codinex</span>
+          </div>
+          <p>We are here to help your next project move forward.</p>
+        </div>
+        <nav class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="training.html">Training</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <p class="footer__copyright">© <span id="year"></span> Codinex Computers Ltd.</p>
+      </div>
+    </footer>
+
+    <div class="chatbot" id="chatbot">
+      <button class="chatbot__toggle" id="chatbotToggle" aria-expanded="false" aria-controls="chatbotPanel">
+        <span class="chatbot__toggle-icon" aria-hidden="true">?</span>
+        <span class="chatbot__toggle-text">Ask Codinex</span>
+      </button>
+      <div class="chatbot__panel" id="chatbotPanel" hidden>
+        <div class="chatbot__header">
+          <div class="chatbot__header-bar">
+            <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+          </div>
+          <div class="chatbot__header-text">
+            <strong>Codinex help</strong>
+            <span>service, training &amp; contact information</span>
+          </div>
+          <button class="chatbot__close" id="chatbotClose" aria-label="Close chat">×</button>
+        </div>
+        <div class="chatbot__signup" id="chatbotSignup">
+          <div class="chatbot__signup-hero">
+            <div class="chatbot__signup-badge" aria-hidden="true">✦</div>
+            <div>
+              <p class="chatbot__signup-title">Welcome to Codinex</p>
+              <p class="chatbot__signup-subtitle">Sign in to chat with our support team.</p>
+            </div>
+          </div>
+          <label class="chatbot__field">
+            <span class="chatbot__field-label">Full name</span>
+            <input type="text" id="chatbotName" placeholder="Enter your name" autocomplete="name" />
+          </label>
+          <label class="chatbot__field">
+            <span class="chatbot__field-label">Email address</span>
+            <input type="email" id="chatbotEmail" placeholder="name@example.com" autocomplete="email" />
+          </label>
+          <button type="button" id="chatbotSignupBtn">Continue</button>
+          <p class="chatbot__signup-status" id="chatbotSignupStatus" role="status"></p>
+        </div>
+        <div class="chatbot__log" id="chatbotLog" role="log" aria-live="polite"></div>
+        <div class="chatbot__quick" id="chatbotQuick" hidden>
+          <button data-q="What services do you offer?">Services?</button>
+          <button data-q="What courses do you train?">Training?</button>
+          <button data-q="Where are you located?">Location?</button>
+        </div>
+        <form class="chatbot__form" id="chatbotForm">
+          <input type="text" id="chatbotInput" placeholder="Sign in to start chatting" autocomplete="off" disabled />
+          <button type="submit" aria-label="Send" disabled>Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="chatbot-utils.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
